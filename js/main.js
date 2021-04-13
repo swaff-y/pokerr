@@ -558,7 +558,10 @@ const game = (arr) => {
     let straight = false;
 
     //test if the suits are all the same
-    if(arr2[0] === arr2[1] && arr2[0] === arr2[2] && arr2[0] === arr2[3] && arr2[0] === arr2[4]){
+    if(arr2[0] === arr2[1]
+      && arr2[0] === arr2[2]
+      && arr2[0] === arr2[3]
+      && arr2[0] === arr2[4]){
       suit = true;
     }
     //test for a straight (ascending values)
@@ -590,14 +593,21 @@ const game = (arr) => {
     //check for four of a kind
     let fourCounter = 0;
     for( let i = 0; i < 2; i++ ){
-      if(arr[i] === arr[i + 1] && arr[i] === arr[i + 2] && arr[i] === arr[i + 3]){
+      if(arr[i] === arr[i + 1]
+        && arr[i] === arr[i + 2]
+        && arr[i] === arr[i + 3]){
         fourCounter++;
         highCard = arr[i];
       }
     }
 
     //assign a ranking value to the players
-    if(arr[0] === '10' && arr[1] === '11' && arr[2] === '12' && arr[3] === '13' && arr[4] === '14' && suit === true){
+    if(arr[0] === '10'
+    && arr[1] === '11'
+    && arr[2] === '12'
+    && arr[3] === '13'
+    && arr[4] === '14'
+    && suit === true){
       value = 10;
     }else if(suit === true && straight === true){
       value = 9;
@@ -630,7 +640,6 @@ const game = (arr) => {
     if(numberComp(first, play1Suit)[1] > numberComp(second, play2Suit)[1]){
       return 1;
     }else if(numberComp(first, play1Suit)[1] === numberComp(second, play2Suit)[1]){
-      // console.log("hello");
       if(parseInt(play1[4]) > parseInt(play2[4])){
         return 1;
       }else if(parseInt(play1[4]) === parseInt(play2[4])){
@@ -667,5 +676,5 @@ for( let i = 0; i < array.length; i++ ){
   }
 }
 
-//printb the result to the console
+//print the result to the console
 console.log("Player 1:", player1, "Player 2:", player2);
