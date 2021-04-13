@@ -549,17 +549,19 @@ const game = (arr) => {
   const first = play1.sort((a,b)=>a-b);
   const second = play2.sort((a,b)=>a-b);
 
+//Function to compare hand with ranking values
   const numberComp = (arr,arr2) => {
+    //initial assigned values
     let value = 1;
     let highCard = arr[4];
     let suit = false;
     let straight = false;
 
-    // console.log(arr);
-
+    //test if the suits are all the same
     if(arr2[0] === arr2[1] && arr2[0] === arr2[2] && arr2[0] === arr2[3] && arr2[0] === arr2[4]){
       suit = true;
     }
+    //test for a straight (ascending values)
     let count = 0;
     for( let i = 0; i < 4; i++ ){
       if(parseInt(arr[i]) === (parseInt(arr[i + 1]) - 1)){
@@ -568,8 +570,8 @@ const game = (arr) => {
     }
     if(count === 4) straight = true;
 
-    // console.log("straight: ",straight, count, arr[4], highCard);
 
+    //check for pairs
     let pairCounter = 0;
     for( let i = 0; i < 4; i++ ){
       if(arr[i] === arr[i + 1] ){
@@ -577,6 +579,7 @@ const game = (arr) => {
         highCard = arr[i];
       }
     }
+    //check for three of a kind
     let threeCounter = 0;
     for( let i = 0; i < 3; i++ ){
       if(arr[i] === arr[i + 1] && arr[i] === arr[i + 2]){
@@ -584,6 +587,7 @@ const game = (arr) => {
         highCard = arr[i];
       }
     }
+    //check for four of a kind
     let fourCounter = 0;
     for( let i = 0; i < 2; i++ ){
       if(arr[i] === arr[i + 1] && arr[i] === arr[i + 2] && arr[i] === arr[i + 3]){
@@ -592,7 +596,7 @@ const game = (arr) => {
       }
     }
 
-    // console.log(arr[0],arr[4],suit);
+    //assign a ranking value to the players
     if(arr[0] === '10' && arr[1] === '11' && arr[2] === '12' && arr[3] === '13' && arr[4] === '14' && suit === true){
       value = 10;
     }else if(suit === true && straight === true){
@@ -615,13 +619,11 @@ const game = (arr) => {
       value = 1;
       highCard = arr[4];
     }
-    // console.log(pairCounter);
+
     return [value, parseInt(highCard)];
   }
 
-  // console.log(numberComp(first, play1Suit));
-  // console.log(numberComp(second, play2Suit));
-
+  //compare rankings of the two players according to the rules.
   if(numberComp(first, play1Suit)[0] > numberComp(second, play2Suit)[0]){
     return 1;
   }else if(numberComp(first, play1Suit)[0] === numberComp(second, play2Suit)[0]){
@@ -644,7 +646,6 @@ const game = (arr) => {
           return 2;
         }
       }else{
-        // console.log("here", play1[4], play2[4]);
         return 2;
       }
     }else{
@@ -655,6 +656,7 @@ const game = (arr) => {
   }
 }
 
+//loop through all the games and check who wins
 let player1 = 0;
 let player2 = 0;
 for( let i = 0; i < array.length; i++ ){
@@ -665,4 +667,5 @@ for( let i = 0; i < array.length; i++ ){
   }
 }
 
-console.log("Player 1:", player1, "Player2:", player2);
+//printb the result to the console
+console.log("Player 1:", player1, "Player 2:", player2);
