@@ -524,7 +524,7 @@ const game = (arr) => {
     return first;
   }
 
-//Map the arrays to crete an array of values
+//Map the arrays to create an array of values
   const play1 = player1.map((value,index)=>{
     let first = value.split('')[0];
     first = iffr(first);
@@ -545,7 +545,7 @@ const game = (arr) => {
     return first;
   })
 
-//Sort the value arrays to be assending
+//Sort the value arrays to be ascending
   const first = play1.sort((a,b)=>a-b);
   const second = play2.sort((a,b)=>a-b);
 
