@@ -2,7 +2,9 @@ console.log("Test")
 // $(document).ready(function(){
 // });
 
-const arr = ["2C","2C","2H","9C","TC","3S","3D","5H","9H","8H"];
+const arr = ["2C","2C","3H","9C","TC","2S","2D","5H","9H","8H"];
+
+
 
 const game = (arr) => {
   const player1 = arr.slice(0,5);
@@ -132,6 +134,8 @@ const game = (arr) => {
     return [value, parseInt(highCard)];
   }
 
+  console.log(numberComp(first, play1Suit));
+  console.log(numberComp(second, play2Suit));
 
   if(numberComp(first, play1Suit)[0] > numberComp(second, play2Suit)[0]){
     return 1;
@@ -139,9 +143,23 @@ const game = (arr) => {
     if(numberComp(first, play1Suit)[1] > numberComp(second, play2Suit)[1]){
       return 1;
     }else if(numberComp(first, play1Suit)[1] === numberComp(second, play2Suit)[1]){
-      if(play1[4] > play2[4]){
+      // console.log("hello");
+      if(parseInt(play1[4]) > parseInt(play2[4])){
         return 1;
+      }else if(parseInt(play1[4]) === parseInt(play2[4])){
+        if(parseInt(play1[3]) > parseInt(play2[3])){
+          return 1;
+        }else if(parseInt(play1[3]) === parseInt(play2[3])){
+          if(parseInt(play1[2]) > parseInt(play2[2])){
+            return 1;
+          }else{
+            return 2;
+          }
+        }else{
+          return 2;
+        }
       }else{
+        // console.log("here", play1[4], play2[4]);
         return 2;
       }
     }else{
