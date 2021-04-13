@@ -1,4 +1,4 @@
-// the test array
+// the test array SCROLL to bottom for code...
 const array = [["9C","9D","8D","7C","3C","2S","KD","TH","9H","8H"],
 ["6C","5H","AS","4H","7S","2S","KD","7H","2C","AC"],
 ["5H","JS","AD","8H","TC","KS","QC","9C","5D","6H"],
